@@ -1,9 +1,9 @@
 import {Builder, BuilderConfiguration, BuilderContext, BuildEvent} from '@angular-devkit/architect';
-import {asWindowsPath, resolve} from '@angular-devkit/core';
+import {getSystemPath, resolve} from '@angular-devkit/core';
 import chalk from 'chalk';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {buildTarget} from '../bazel/build-target';
+import {runBazel} from '../bazel/build-target';
 import {checkBazelInstallation} from '../bazel/check-installation';
 import {Schema} from './schema';
 
@@ -12,7 +12,7 @@ export class BundleBuilder implements Builder<Schema> {
   constructor(private context: BuilderContext) {}
 
   run(builderConfig: BuilderConfiguration<Partial<Schema>>): Observable<BuildEvent> {
-    const projectRoot = asWindowsPath(
+    const projectRoot = getSystemPath(
         resolve(this.context.workspace.root, builderConfig.root));
     const targetLabel = builderConfig.options.targetLabel;
 
@@ -21,10 +21,10 @@ export class BundleBuilder implements Builder<Schema> {
           'available in the $PATH.');
     }
 
-    console.info(chalk.green('Building Bazel target:'), chalk.yellow(targetLabel));
+    console.info(chalk.yellow(targetLabel));
 
     // TODO: Support passing flags.
-    return buildTarget(projectRoot, targetLabel, [])
+    return runBazel(projectRoot, builderConfig.options.bazelCommand, targetLabel, [])
       .pipe(
         map(() => ({success: true})),
         catchError(() => of({success: false})),

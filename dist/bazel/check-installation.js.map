@@ -1,0 +1,1 @@
+{"version":3,"file":"check-installation.js","sourceRoot":"","sources":["../../src/bazel/check-installation.ts"],"names":[],"mappings":";;AAAA,+CAAwC;AAExC,gCAAuC,UAAkB;IACvD,OAAO,yBAAS,CAAC,OAAO,EAAE,CAAC,SAAS,CAAC,EAAE,EAAC,GAAG,EAAE,UAAU,EAAE,KAAK,EAAE,IAAI,EAAC,CAAC,CAAC,MAAM,KAAK,CAAC,CAAC;AACtF,CAAC;AAFD,wDAEC"}
