@@ -1,0 +1,15 @@
+{
+  "title": "Bazel bundle builder schema",
+  "description": "Options for the Bazel BundleBuilder",
+  "type": "object",
+  "properties": {
+    "targetLabel": {
+      "type": "string",
+      "description": "Bazel target that builds the bundle."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "targetLabel"
+  ]
+}

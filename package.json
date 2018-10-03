@@ -1,0 +1,40 @@
+{
+  "name": "bazel-cli-builders",
+  "version": "0.0.1",
+  "description": "Angular CLI architect builders for Bazel",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist/",
+    "build": "npm run clean && tsc -p src/tsconfig.json && npm run copy-assets",
+    "copy-assets": "cpy \"**/*.json\" \"../dist/\" --cwd=src --parents"
+  },
+  "keywords": [
+    "bazel",
+    "angular-cli",
+    "builders",
+    "custom",
+    "build"
+  ],
+  "builders": "./builders.json",
+  "author": "Paul Gschwendtner",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular-devkit/architect": "^0.8.3",
+    "@angular-devkit/build-angular": "^0.8.3",
+    "@angular-devkit/core": "^0.8.3",
+    "rxjs": "~6.2.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "^0.8.3",
+    "@angular-devkit/build-angular": "^0.8.3",
+    "@angular-devkit/core": "^0.8.3",
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^10.11.4",
+    "cpy-cli": "^2.0.0",
+    "rxjs": "~6.2.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "build": {
+      "class": "./dist/build/index",
+      "schema": "./dist/build/schema.json",
+      "description": "Builds the Bazel bundle target."
+    }
+  }
+}
